@@ -17,4 +17,6 @@ Here is the command to add or remove dimensions/biome from the "blacklist"
 
 # License
 
-MIT License
+This garbage code is under [CC BY-NC-SA](https://creativecommons.org/licenses/by-nc-sa/4.0/) license
+
+<img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-nc-sa.png" width="200">

@@ -9,6 +9,12 @@ TechGuns was the next best solution with it's oxygen tanks and mask.
 
 Might try one day.
 
+# How use
+
+Here is the command to add or remove dimensions/biome from the "blacklist"
+
+    /nobreath (biome|dimension) (add|remove)
+
 # License
 
 MIT License

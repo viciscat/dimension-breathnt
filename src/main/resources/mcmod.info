@@ -1,0 +1,18 @@
+[
+  {
+    "modid": "dimension-breathnt",
+    "name": "DimensionBreathnt",
+    "description": "Using config makes people not be able to breathe in certain dimensions",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "",
+    "updateUrl": "",
+    "authorList": [
+      "viciscat"
+    ],
+    "credits": "",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": []
+  }
+]

@@ -3,7 +3,7 @@
     "modid": "dimension-breathnt",
     "name": "DimensionBreathnt",
     "description": "Using config makes people not be able to breathe in certain dimensions",
-    "version": "${version}",
+    "version": "1.0",
     "mcversion": "${mcversion}",
     "url": "https://github.com/viciscat/dimension-breathnt/",
     "updateUrl": "",

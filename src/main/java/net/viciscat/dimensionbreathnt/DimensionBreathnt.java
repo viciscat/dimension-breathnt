@@ -1,7 +1,5 @@
 package net.viciscat.dimensionbreathnt;
 
-import com.google.common.collect.Lists;
-import com.google.common.primitives.Ints;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
@@ -9,7 +7,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.config.Configuration;
@@ -21,7 +18,6 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.viciscat.dimensionbreathnt.commands.CommandNobreath;
@@ -160,13 +156,6 @@ public class DimensionBreathnt {
         }
 
         @SubscribeEvent
-        public static void onChangeDimension(PlayerEvent.PlayerChangedDimensionEvent event) {
-            EntityPlayer p = event.player;
-            p.sendMessage(new TextComponentString(Integer.toString(p.dimension)));
-            p.sendMessage(p.getDataManager().get(TGExtendedPlayer.DATA_BACK_SLOT).getTextComponent());
-        }
-
-        @SubscribeEvent
         public static void playerTick(TickEvent.PlayerTickEvent event) {
             if (event.phase == TickEvent.Phase.START) return;
 
@@ -175,6 +164,7 @@ public class DimensionBreathnt {
 
             Integer biome_id = Biome.getIdForBiome(p.world.getBiome(p.getPosition()));
 
+            // Checks if player in blacklisted dimension or biome
             if (Dimensions_no_breath.contains(p.dimension) || Biomes_no_breath.contains(biome_id)) {
 
                 ItemStack back_item = p.getDataManager().get(TGExtendedPlayer.DATA_BACK_SLOT);
@@ -189,6 +179,7 @@ public class DimensionBreathnt {
                 // If no air
                 if (pAir == 0) {
 
+                    // If the player has the gear needed, drain the oxygen tank else damage player
                     if (back_item.getItem() == TGItems.SCUBA_TANKS &&
                             face_item.getItem() == TGItems.OXYGEN_MASK.getItem() &&
                             back_item.getItemDamage() < back_item.getMaxDamage()) {
